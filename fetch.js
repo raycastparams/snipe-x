@@ -3,19 +3,19 @@ const fs = require("fs");
 
 const APIs = [
   {
-    name: "Basic API",
+    name: "BASIC_x1",
     baseUrl:
       "https://catalog.roproxy.com/v1/search/items/details?Category=12&Subcategory=39&Limit=30",
     outputFile: "emotes.json",
   },
   {
-    name: "Latest API",
+    name: "LATEST_X1",
     baseUrl:
       "https://catalog.roproxy.com/v1/search/items/details?Category=12&Subcategory=39&Limit=30&salesTypeFilter=1&SortType=3",
     outputFile: "emotes.json",
   },
   {
-    name: "Animation API",
+    name: "ANIM_X1",
     baseUrl:
       "https://catalog.roproxy.com/v1/search/items/details?Category=12&Subcategory=38&salesTypeFilter=1&Limit=30",
     outputFile: "animations.json",

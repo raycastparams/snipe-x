@@ -2,7 +2,7 @@ name: snipedashx
 
 on:
   schedule:
-- cron: "*/30 * * * *"  # every 30 minutes
+    - cron: "*/30 * * * *"  # every 30 minutes
   workflow_dispatch:
 
 jobs:
@@ -24,11 +24,9 @@ jobs:
           git config --global user.name "snipe-x"
           git config --global user.email "snipe-x@noreply.github.com"
 
-    
           if [[ `git status --porcelain` ]]; then
             git add emotes.json
             git commit -m "update emote list"
             git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
           else
             echo "No changes to commit."
-          fi

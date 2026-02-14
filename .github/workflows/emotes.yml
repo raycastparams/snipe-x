@@ -2,7 +2,7 @@ name: snipedashx
 
 on:
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 * * * *"  # every hour
   workflow_dispatch:
 
 jobs:
@@ -19,10 +19,16 @@ jobs:
       - name: Run fetch script
         run: node fetch.js
 
-      - name: Commit changes
+      - name: Commit changes if any
         run: |
           git config --global user.name "snipe-x"
           git config --global user.email "snipe-x@noreply.github.com"
-          git add emotes.json
-          git diff --cached --quiet || git commit -m "update emote list"
-          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+
+    
+          if [[ `git status --porcelain` ]]; then
+            git add emotes.json
+            git commit -m "update emote list"
+            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+          else
+            echo "No changes to commit."
+          fi

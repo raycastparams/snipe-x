@@ -60,7 +60,7 @@ async function main() {
 
     cursor = data.nextPageCursor;
 
-    await delay(1250);
+    await delay(1500);
   } while (cursor && !stop);
 
   if (newEmotes.length > 0) {

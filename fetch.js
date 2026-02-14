@@ -11,7 +11,7 @@ async function fetchPage(cursor = "", retries = 3) {
   try {
     const res = await fetch(url, {
       headers: {
-        "User-Agent": "RobloxEmoteTracker/1.0",
+        "User-Agent": "snipe-x/1.0",
       },
     });
 

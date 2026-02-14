@@ -1,8 +1,8 @@
-name: Fetch Roblox Emotes
+name: acquire emotes
 
 on:
   schedule:
-    - cron: "0 * * * *"  
+    - cron: "0 * * * *"   # every hour
   workflow_dispatch:
 
 jobs:
@@ -24,5 +24,5 @@ jobs:
           git config --global user.name "snipe-x"
           git config --global user.email "snipe-x@noreply.github.com"
           git add emotes.json
-          git commit -m "update emote list" || echo "no changes"
+          git diff --cached --quiet || git commit -m "update emote list"
           git push

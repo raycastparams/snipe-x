@@ -1,5 +1,4 @@
-name: Sniper System
-
+name: snipedashx
 on:
   schedule:
     - cron: "0 * * * *"  # every hour

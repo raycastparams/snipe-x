@@ -25,9 +25,6 @@ jobs:
       - name: Run fetch script
         run: node fetch.js
 
-      - name: Run sniper script
-        run: node run.js
-
       - name: Commit and push if changed
         run: |
           git config --local user.name "snipe-x"

@@ -1,4 +1,4 @@
-name: snipedashx
+name: Sniper System
 
 on:
   schedule:
@@ -6,29 +6,62 @@ on:
   workflow_dispatch:
 
 jobs:
-  fetch:
+  sniper:
     runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+    permissions:
+      contents: write
 
-      - uses: actions/setup-node@v4
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
       - name: Run fetch script
         run: node fetch.js
 
-      - name: Commit changes if any
-        run: |
-          git config --global user.name "snipe-x"
-          git config --global user.email "snipe-x@noreply.github.com"
+      - name: Run sniper script
+        run: node run.js
 
-    
-          if [[ `git status --porcelain` ]]; then
-            git add emotes.json
-            git commit -m "update emote list"
-            git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git HEAD:main
+      - name: Commit and push if changed
+        run: |
+          git config --local user.name "snipe-x"
+          git config --local user.email "snipe-x@noreply.github.com"
+
+          if [ -n "$(git status --porcelain)" ]; then
+            git add emotes.json animations.json
+            git commit -m "upd $(date '+%Y-%m-%d %H:%M:%S UTC')"
+            git push
           else
             echo "No changes to commit."
+          fi
+
+      - name: Log completion
+        run: |
+          echo "--- EmoteSniper ---"
+          if [ -f "emotes.json" ]; then
+            TOTAL_ITEMS=$(jq '.totalItems' EmoteSniper.json)
+            LAST_UPDATE=$(jq -r '.lastUpdate' EmoteSniper.json)
+            echo "success"
+            echo "items: $TOTAL_ITEMS"
+            echo "last upd: $LAST_UPDATE"
+          else
+            echo "emotes.json not found"
+          fi
+
+          echo "--- AnimationSniper ---"
+          if [ -f "animations.json" ]; then
+            TOTAL_ITEMS=$(jq '.totalItems' AnimationSniper.json)
+            LAST_UPDATE=$(jq -r '.lastUpdate' AnimationSniper.json)
+            echo "anim update completed"
+            echo "items: $TOTAL_ITEMS"
+            echo "last upd: $LAST_UPDATE"
+          else
+            echo "animations.json not found"
           fi

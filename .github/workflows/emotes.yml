@@ -42,8 +42,8 @@ jobs:
         run: |
           echo "--- EmoteSniper ---"
           if [ -f "emotes.json" ]; then
-            TOTAL_ITEMS=$(jq '.totalItems' EmoteSniper.json)
-            LAST_UPDATE=$(jq -r '.lastUpdate' EmoteSniper.json)
+            TOTAL_ITEMS=$(jq '.totalItems' emotes.json)
+            LAST_UPDATE=$(jq -r '.lastUpdate' emotes.json)
             echo "success"
             echo "items: $TOTAL_ITEMS"
             echo "last upd: $LAST_UPDATE"
@@ -53,8 +53,8 @@ jobs:
 
           echo "--- AnimationSniper ---"
           if [ -f "animations.json" ]; then
-            TOTAL_ITEMS=$(jq '.totalItems' AnimationSniper.json)
-            LAST_UPDATE=$(jq -r '.lastUpdate' AnimationSniper.json)
+            TOTAL_ITEMS=$(jq '.totalItems' animations.json)
+            LAST_UPDATE=$(jq -r '.lastUpdate' animations.json)
             echo "anim update completed"
             echo "items: $TOTAL_ITEMS"
             echo "last upd: $LAST_UPDATE"

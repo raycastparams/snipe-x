@@ -1,7 +1,7 @@
 {
   "keyword": null,
-  "totalItems": 34165,
-  "lastUpdate": "2026-02-17T20:36:17.719Z",
+  "totalItems": 34170,
+  "lastUpdate": "2026-02-17T21:34:51.786Z",
   "data": [
     {
       "id": 3360689775,
@@ -136662,6 +136662,26 @@
     {
       "id": 137048730803837,
       "name": "Kazotsky Kick Emote"
+    },
+    {
+      "id": 136483332731838,
+      "name": "Needy Circle Shake (OG)"
+    },
+    {
+      "id": 95806138465081,
+      "name": "Cute sit"
+    },
+    {
+      "id": 134155984071161,
+      "name": "Teleport Posing dance"
+    },
+    {
+      "id": 133475903379601,
+      "name": "Arms crossed stance (for blocky)"
+    },
+    {
+      "id": 119562016400368,
+      "name": "Looping the rooms"
     }
   ]
 }

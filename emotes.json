@@ -1,7 +1,7 @@
 {
   "keyword": null,
-  "totalItems": 34553,
-  "lastUpdate": "2026-02-20T14:01:13.203Z",
+  "totalItems": 34554,
+  "lastUpdate": "2026-02-20T14:52:27.896Z",
   "data": [
     {
       "id": 3360689775,
@@ -138214,6 +138214,10 @@
     {
       "id": 70727697568366,
       "name": "Chasing Stars Radiant Floating Aura [Fly]"
+    },
+    {
+      "id": 109077458250917,
+      "name": "Deepwoken | Griddy Taunt [R6]"
     }
   ]
 }
